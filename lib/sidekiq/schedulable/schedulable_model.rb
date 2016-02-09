@@ -12,7 +12,7 @@ module Sidekiq
 
       protected
         def enqueue_worker
-          WorkerScheduler.new.schedule worker, *worker_args
+          WorkerScheduler.new.schedule worker, schedule_at, *worker_args
         end
 
         def dequeue_worker
