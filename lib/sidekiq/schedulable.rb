@@ -1,7 +1,9 @@
-require "sidekiq/schedulable/version"
+require 'sidekiq/schedulable/version'
+
+require 'sidekiq/schedulable/schedulable_model'
+require 'sidekiq/schedulable/worker_scheduler'
 
 module Sidekiq
   module Schedulable
-    # Your code goes here...
   end
 end
