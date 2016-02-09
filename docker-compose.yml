@@ -5,7 +5,7 @@ rspec:
   environment:
     SPEC_OPTS: "-f progress -f JUnit -o reports/results.xml"
     REDIS_URL: redis://redis:6379
-  command: bash -lc 'cd /workspace && (rbenv install $(cat .ruby-version) || rbenv version) && gem install bundler && rbenv rehash && bundle install && xvfb-run -a bundle exec rspec'
+  command: bash -lc 'cd /workspace && (rbenv install $$(cat .ruby-version) || rbenv version) && gem install bundler && rbenv rehash && bundle install && xvfb-run -a bundle exec rspec'
 
   volumes:
     - ./:/workspace
