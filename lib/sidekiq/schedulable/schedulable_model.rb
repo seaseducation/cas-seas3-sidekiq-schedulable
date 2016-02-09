@@ -16,7 +16,7 @@ module Sidekiq
         end
 
         def dequeue_worker
-          WorkerScheduler.new.deschedule worker, id
+          WorkerScheduler.new.deschedule worker, *worker_args
         end
 
         def worker
