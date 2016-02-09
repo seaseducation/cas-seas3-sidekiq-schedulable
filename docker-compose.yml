@@ -1,11 +1,17 @@
 rspec:
   image: docker.metova.com:5000/metova/rspec-jenkins
+  links:
+    - redis
   environment:
     SPEC_OPTS: "-f progress -f JUnit -o reports/results.xml"
-  command: bash -lc 'cd /workspace && (rbenv install $$(cat .ruby-version) || rbenv version) && gem install bundler && rbenv rehash && bundle install && xvfb-run -a bundle exec rspec'
+    REDIS_URL: redis://redis:6379
+  command: bash -lc 'cd /workspace && (rbenv install $(cat .ruby-version) || rbenv version) && gem install bundler && rbenv rehash && bundle install && xvfb-run -a bundle exec rspec'
 
   volumes:
     - ./:/workspace
     - ~/.ssh:/root/.ssh
   volumes_from:
     - rbenv
+
+redis:
+  image: redis
